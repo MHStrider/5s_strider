@@ -17,7 +17,7 @@
     <p>про участь в зоні бойових дій</p>
 	<p>Заповніть усі необхідні поля для подання заявки.</p>
 
-    <form id="form" method="post" enctype="multipart/form-data">
+    <form id="form" method="post">
       <!-- 1. ПІБ -->
       <label for="token">1. Жетон</label>
       <input type="text" id="token" name="token" placeholder="Г-123456" required>
@@ -79,6 +79,18 @@
       alert("Помилка: " + result);
     }
   });
+</script>
+
+<script>
+function handleDocumentChange() {
+  const documentType = document.getElementById("document").value;
+  const subField = document.getElementById("subFieldContainer");
+  if (documentType) {
+    subField.style.display = "block";
+  } else {
+    subField.style.display = "none";
+  }
+}
 </script>
 
 </body>
