@@ -40,8 +40,9 @@
       </select>
 
       <!-- 5. Документи -->
-      <label for="files">5. Документи</label>
-      <input type="file" id="files" name="files" multiple required>
+	  <label for="documents">5. Документи</label>
+	  <input type="text" id="documents" name="documents" placeholder="Введіть назви документів або посилання" required>
+
 
       <!-- Кнопка -->
       <button type="submit">Відправити</button>
@@ -49,25 +50,25 @@
   </div>
 
   <script>
-	document.getElementById("form").addEventListener("submit", async function (e) {
-		e.preventDefault();
-		const form = e.target;
-		const formData = new FormData(form);
+  document.getElementById("form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
 
-		// Надсилаємо дані + файли
-		const response = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
-			method: "POST",
-			body: formData
-		});
+    const response = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+      method: "POST",
+      body: formData
+    });
 
-		const result = await response.text();
-		if (response.ok) {
-			alert("Успішно відправлено!\n" + result);
-			form.reset();
-		} else {
-			alert("Помилка: " + result);
-		}
-	});
-	</script>
+    const result = await response.text();
+    if (response.ok) {
+      alert("Успішно відправлено!\n" + result);
+      form.reset();
+    } else {
+      alert("Помилка: " + result);
+    }
+  });
+</script>
+
 </body>
 </html>
