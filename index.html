@@ -1,0 +1,30 @@
+<form id="myForm">
+  <input type="text" name="name" placeholder="Ваше ПІБ" required>
+  <input type="text" name="type" placeholder="Тип довідки" required>
+  <input type="text" name="contact" placeholder="Контакт" required>
+  <button type="submit">Надіслати</button>
+</form>
+
+<script>
+  const form = document.getElementById('myForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const data = {
+      name: form.name.value,
+      type: form.type.value,
+      contact: form.contact.value
+    };
+
+    fetch('ТВОЄ_ПОСИЛАННЯ_НА_СКРИПТ', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(r => r.json())
+    .then(response => {
+      alert("Заявку надіслано!");
+      form.reset();
+    })
+    .catch(err => alert("Помилка надсилання"));
+  });
+</script>
