@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подання довідки</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Довідка №5</h1>
+    <p>Заповніть усі необхідні поля для подання заявки.</p>
+
+    <form id="form">
+      <!-- 1. Військове звання -->
+      <label for="rank">1. Військове звання</label>
+      <select id="rank" name="rank">
+        <option value="">Оберіть...</option>
+        <option>Зразок1</option>
+        <option>Зразок2</option>
+        <option>Зразок3</option>
+      </select>
+
+      <!-- 2. ПІБ -->
+      <label for="name">2. ПІБ</label>
+      <input type="text" id="name" name="name" placeholder="Прізвище Ім'я По батькові" required>
+
+      <!-- 3. Повна посада -->
+      <label for="position">3. Повна посада</label>
+      <div class="hint">Зразок: стрілець 3 взводу 2 роти охорони</div>
+      <input type="text" id="position" name="position" placeholder="Ваша посада" required>
+
+      <!-- 4. Вид служби -->
+      <label for="service">4. Вид служби</label>
+      <select id="service" name="service">
+        <option value="">Оберіть...</option>
+        <option>Зразок1</option>
+        <option>Зразок2</option>
+        <option>Зразок3</option>
+      </select>
+
+      <!-- 5. Юридична назва установи -->
+      <label for="institution">5. Юридична назва установи</label>
+      <select id="institution" name="institution" onchange="handleInstitutionChange()">
+        <option value="">Оберіть...</option>
+        <option value="school">Школа</option>
+        <option value="local">Місцева влада області</option>
+        <option value="other">Інше</option>
+      </select>
+
+      <!-- Підпункт -->
+      <div id="subFieldContainer" style="display: none;">
+        <input type="text" id="subInstitution" name="subInstitution" placeholder="№ 6 / Назва організації">
+      </div>
+
+      <!-- Примітка -->
+      <label for="note">Примітка</label>
+      <textarea id="note" name="note" rows="4" placeholder="Напишіть додаткову інформацію..."></textarea>
+
+      <!-- Кнопка -->
+      <button type="submit">Відправити</button>
+    </form>
+  </div>
+
+  <script>
+    function handleInstitutionChange() {
+      const select = document.getElementById('institution');
+      const subField = document.getElementById('subFieldContainer');
+      if (select.value === 'school' || select.value === 'local' || select.value === 'other') {
+        subField.style.display = 'block';
+      } else {
+        subField.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
