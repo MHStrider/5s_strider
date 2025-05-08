@@ -1,30 +1,17 @@
-<form id="myForm">
-  <input type="text" name="name" placeholder="Ваше ПІБ" required>
-  <input type="text" name="type" placeholder="Тип довідки" required>
-  <input type="text" name="contact" placeholder="Контакт" required>
-  <button type="submit">Надіслати</button>
-</form>
-
-<script>
-  const form = document.getElementById('myForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const data = {
-      name: form.name.value,
-      type: form.type.value,
-      contact: form.contact.value
-    };
-
-    fetch('ТВОЄ_ПОСИЛАННЯ_НА_СКРИПТ', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then(r => r.json())
-    .then(response => {
-      alert("Заявку надіслано!");
-      form.reset();
-    })
-    .catch(err => alert("Помилка надсилання"));
-  });
-</script>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подання довідок</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Вітаємо у системі подання довідок!</h1>
+    <p>Оберіть потрібну довідку нижче:</p>
+    <a href="dovidka5.html" class="button">Довідка 5</a>
+    <a href="dovidka6.html" class="button">Довідка 6</a>
+  </div>
+</body>
+</html>
