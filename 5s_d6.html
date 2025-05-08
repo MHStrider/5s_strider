@@ -13,40 +13,46 @@
 </a>
 
 	
-	<h1>Довідка №6</h1>
-    <p>Заповніть усі необхідні поля для подання заявки.</p>
+	<h1>Довідка Ф-6</h1>
+    <p>про участь в зоні бойових дій</p>
+	<p>Заповніть усі необхідні поля для подання заявки.</p>
 
     <form id="form" method="post" enctype="multipart/form-data">
-      <!-- 1. Військове звання -->
-      <label for="rank">1. Військове звання</label>
-      <select id="rank" name="rank">
+      <!-- 1. ПІБ -->
+      <label for="token">1. Жетон</label>
+      <input type="text" id="token" name="token" placeholder="Г-123456" required>
+
+	  <!-- 2. Документ, що посвідчує особу -->
+      <label for="document">2. Документ, що посвідчує особу</label>
+      <select id="document" name="document" onchange="handleDocumentChange()">
         <option value="">Оберіть...</option>
-        <option>Зразок1</option>
-        <option>Зразок2</option>
-        <option>Зразок3</option>
+        <option value="passport">Паспорт громадянина України (старого зразку)</option>
+        <option value="id_passport">Паспорт громадянина України (ID-картка)</option>
+        <option value="id_border">Паспорт громадянина України для виїзду за кордон</option>
       </select>
 
-      <!-- 2. ПІБ -->
-      <label for="name">2. ПІБ</label>
-      <input type="text" id="name" name="name" placeholder="Прізвище Ім'я По батькові" required>
+      <!-- Підпункт -->
+      <div id="subFieldContainer" style="display: none;">
+        <input type="text" id="subDocument" name="subDocument" placeholder="Серія (при наявності) та номер">
+      </div>
 
-      <!-- 3. Повна посада -->
-      <label for="position">3. Повна посада</label>
-      <div class="hint">Зразок: стрілець 3 взводу 2 роти охорони</div>
-      <input type="text" id="position" name="position" placeholder="Ваша посада" required>
+	  <!-- 3. РНОКПП -->
+	  <label for="code_id">3. РНОКПП</label>
+	  <input type="text" id="code_id" name="code_id" placeholder="Введіть свій індетифікаційний код" required>
 
-      <!-- 4. Вид служби -->
-      <label for="service">4. Вид служби</label>
-      <select id="service" name="service">
-        <option value="">Оберіть...</option>
-        <option>Зразок1</option>
-        <option>Зразок2</option>
-        <option>Зразок3</option>
-      </select>
+	  <!-- 4. Адреса реєстрації -->
+	  <label for="reg_addr">4. Адреса проживання</label>
+	  <input type="text" id="reg_addr" name="reg_addr" placeholder="Введіть свою адресу реєстрації" required>
+	  
+	  <!-- 5. Номер телефону -->
+	  <label for="telephone">5. Номер телефону</label>
+	  <input type="text" id="telephone" name="telephone" placeholder="Введіть свій номер телефону" required>
 
-      <!-- 5. Документи -->
-	  <label for="documents">5. Документи</label>
-	  <input type="text" id="documents" name="documents" placeholder="Введіть назви документів або посилання" required>
+      <!-- Примітка -->
+      <label for="note">Примітка</label>
+      <textarea id="note" name="note" rows="4" placeholder="Напишіть додаткову інформацію..."></textarea>
+
+      
 
 
       <!-- Кнопка -->
