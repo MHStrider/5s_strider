@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Довідка №6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Довідка №6</h1>
+    <p>Заповніть усі необхідні поля для подання заявки.</p>
+
+    <form id="form" method="post" enctype="multipart/form-data">
+      <!-- 1. Військове звання -->
+      <label for="rank">1. Військове звання</label>
+      <select id="rank" name="rank">
+        <option value="">Оберіть...</option>
+        <option>Зразок1</option>
+        <option>Зразок2</option>
+        <option>Зразок3</option>
+      </select>
+
+      <!-- 2. ПІБ -->
+      <label for="name">2. ПІБ</label>
+      <input type="text" id="name" name="name" placeholder="Прізвище Ім'я По батькові" required>
+
+      <!-- 3. Повна посада -->
+      <label for="position">3. Повна посада</label>
+      <div class="hint">Зразок: стрілець 3 взводу 2 роти охорони</div>
+      <input type="text" id="position" name="position" placeholder="Ваша посада" required>
+
+      <!-- 4. Вид служби -->
+      <label for="service">4. Вид служби</label>
+      <select id="service" name="service">
+        <option value="">Оберіть...</option>
+        <option>Зразок1</option>
+        <option>Зразок2</option>
+        <option>Зразок3</option>
+      </select>
+
+      <!-- 5. Документи -->
+      <label for="files">5. Документи</label>
+      <input type="file" id="files" name="files" multiple required>
+
+      <!-- Кнопка -->
+      <button type="submit">Відправити</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      // Надішлимо на Google Apps Script (URL додамо пізніше)
+      const response = await fetch("ВАШ_WEB_APP_URL", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("Успішно відправлено!");
+        form.reset();
+      } else {
+        alert("Помилка під час відправки.");
+      }
+    });
+  </script>
+</body>
+</html>
