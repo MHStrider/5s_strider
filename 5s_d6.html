@@ -55,8 +55,8 @@
       const form = e.target;
       const formData = new FormData(form);
 
-      // Надішлимо на Google Apps Script (URL додамо пізніше)
-      const response = await fetch("ВАШ_WEB_APP_URL", {
+      // Надішлимо на Google Apps Script
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyijKIhQNDWQ-0PEkAde69BzXts-ftmm0je6vM_WYZ3mPbpgWUUltTAJjhRlXIHfrUFng/exec", {
         method: "POST",
         body: formData,
       });
